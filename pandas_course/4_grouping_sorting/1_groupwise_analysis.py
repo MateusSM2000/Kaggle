@@ -11,8 +11,10 @@ print(reviews.groupby('points').price.min(), '\n' * 10) # cheapest wine in each 
 print(reviews.groupby('winery').apply(lambda df: df.title.iloc[0]),
       type(reviews.groupby('winery').apply(lambda df: df.title.iloc[0])), '\n' * 10)
 
-print(reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()]),
+print(reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()]),   # o vinho com mais pontos dentre cada provincia de cada pais
       type(reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()])), '\n')
 print(reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()]).loc[:, ['points', 'price']],
       '\n')
-print(reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()]).loc[['Argentina', 'Uruguay'], ['points', 'price']])
+print(reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()]).loc[['Argentina', 'Uruguay'], ['points', 'price']], '\n' * 10)
+
+print(reviews.groupby('country').price.agg([len, min, max, sum]), '\n' * 10)
