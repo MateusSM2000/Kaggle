@@ -23,3 +23,12 @@ print(price_extremes, '\n' * 10)
 # 4
 sorted_varieties = price_extremes.sort_values(by=['min', 'max'], ascending=False)
 print(sorted_varieties, '\n' * 10)
+
+# 5
+reviewer_mean_ratings = reviews.groupby('taster_name').apply(lambda df: df.points.mean())
+print(reviewer_mean_ratings, '\n' * 10)
+
+
+# 6
+country_variety_counts = reviews.groupby(['country', 'variety']).variety.value_counts().sort_values(ascending=False)
+print(country_variety_counts, '\n' * 10)
